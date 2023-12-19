@@ -144,8 +144,8 @@ function getBook(id) {
 }
 
 // Destrcucturing
-const book = getBook(2);
-
+const book = getBook(1);
+book;
 // const title = book.title;
 // const author = book.author;
 
@@ -154,10 +154,28 @@ const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
 
 console.log(title, author, genres);
 
-// const primaryGenres = genres[0];
-// const secondaryGenres = genres[1];
-
 // ** this method is for arrays
-const [primaryGenres, secondaryGenres] = genres;
+// ** ... rest operations , it should be at the end of the array
+const [primaryGenres, secondaryGenres, ...otherGenres] = genres;
 
-console.log(primaryGenres, secondaryGenres);
+console.log(primaryGenres, secondaryGenres, otherGenres);
+
+// *TODO: ...spread operations , this syntax will take all value out of the array then place them one by one , it should be at the start || end of the array
+const newGenres = [...genres, "epic fantasy"];
+// const newGenres = [genres, "epic fantasy"];
+newGenres;
+
+/*
+ *this method is for objects in spread operations
+ *, this syntax will take all value out of the object then place them one by one
+ *, it should be at the start of the object
+ */
+const updateBook = {
+  ...book,
+  // *TODO: Adding new properties
+  moviePublishDate: "2001-12-19",
+  // *TODO: Overwriting an exiting properties
+  pages: 1210,
+};
+// const updateBook = { book, moviePublishDate: "2001-12-19" };
+updateBook;
