@@ -144,41 +144,41 @@ function getBook(id) {
 }
 
 //* Destrcucturing
-const book = getBook(3);
-book;
+// const book = getBook(3);
+// book;
 // const title = book.title;
 // const author = book.author;
 
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
-  book;
+// const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+//   book;
 
-console.log(title, author, genres);
+// console.log(title, author, genres);
 
 // ** this method is for arrays
 // ** ... rest operations , it should be at the end of the array
-const [primaryGenres, secondaryGenres, ...otherGenres] = genres;
+// const [primaryGenres, secondaryGenres, ...otherGenres] = genres;
 
-console.log(primaryGenres, secondaryGenres, otherGenres);
+// console.log(primaryGenres, secondaryGenres, otherGenres);
 
 // *TODO: ...spread operations , this syntax will take all value out of the array then place them one by one , it should be at the start || end of the array
-const newGenres = [...genres, "epic fantasy"];
+// const newGenres = [...genres, "epic fantasy"];
 // const newGenres = [genres, "epic fantasy"];
-newGenres;
+// newGenres;
 
 /*
  *this method is for objects in spread operations
  *, this syntax will take all value out of the object then place them one by one
  *, it should be at the start of the object
  */
-const updateBook = {
-  ...book,
-  // *TODO: Adding new properties
-  moviePublishDate: "2001-12-19",
-  // *TODO: Overwriting an exiting properties
-  pages: 1210,
-};
+// const updateBook = {
+//   ...book,
+//   // *TODO: Adding new properties
+//   moviePublishDate: "2001-12-19",
+//   // *TODO: Overwriting an exiting properties
+//   pages: 1210,
+// };
 // const updateBook = { book, moviePublishDate: "2001-12-19" };
-updateBook;
+// updateBook;
 
 //* Arrow functions
 
@@ -186,7 +186,7 @@ updateBook;
 //   return str.split("-")[0];
 // }
 
-const getYear = (str) => str.split("-")[0];
+// const getYear = (str) => str.split("-")[0];
 
 /*
 this is Template Literals
@@ -199,28 +199,28 @@ this is Template Literals
 // *TODO: Ternaries have three part => first part is condition
 // *TODO: , second part is result of condition if is true
 // *TODO: , third part is result of condition if is false
-const pageRange =
-  pages > 1000 ? "over a thousand pages" : "less than a 1000 pages";
-console.log(`The Book has ${pageRange} pages`);
+// const pageRange =
+//   pages > 1000 ? "over a thousand pages" : "less than a 1000 pages";
+// console.log(`The Book has ${pageRange} pages`);
 
 // * Short-Circuiting and Logical Operators
 // *TODO: && do like if statement, return the first value not even look at second value
-console.log(true && "Some string");
-console.log(false && "Some string");
-console.log(hasMovieAdaptation && "This book has a movie");
+// console.log(true && "Some string");
+// console.log(false && "Some string");
+// console.log(hasMovieAdaptation && "This book has a movie");
 
 // * truly , falsy
 // *! falsy : 0, '', null, undefined
-console.log("jonas" && "Some string");
-console.log(0 && "Some string");
+// console.log("jonas" && "Some string");
+// console.log(0 && "Some string");
 
 // *TODO: || do like if statement, first value is true and will return result doesn't even look at second value
-console.log(true || "Some string");
-console.log(false || "Some string");
+// console.log(true || "Some string");
+// console.log(false || "Some string");
 
-console.log(book.translations.spanish);
-const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
-console.log(spanishTranslation);
+// console.log(book.translations.spanish);
+// const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+// console.log(spanishTranslation);
 
 // const countWrong = book.reviews.librarything.reviewsCount || "no data";
 // countWrong;
@@ -233,6 +233,16 @@ console.log(spanishTranslation);
 
 // * Optional Chaining
 
+// function getTotalReviewCount(book) {
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+// * if value in object is undefined Js not try to read reviewsCount
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   librarything;
+//   return goodreads + librarything;
+// }
+
+// console.log(getTotalReviewCount(book));
+
 function getTotalReviewCount(book) {
   const goodreads = book.reviews?.goodreads?.reviewsCount;
   // * if value in object is undefined Js not try to read reviewsCount
@@ -240,4 +250,20 @@ function getTotalReviewCount(book) {
   return goodreads + librarything;
 }
 
-console.log(getTotalReviewCount(book));
+const books = getBooks();
+books;
+
+// * Array .map Methods
+const x = [1, 2, 3, 4, 5].map((e) => e * 2);
+console.log(x);
+
+const titles = books.map((book) => book.title);
+titles;
+
+const essentialData = books.map((book) => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewCount(book),
+}));
+
+essentialData;
