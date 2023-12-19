@@ -253,7 +253,7 @@ function getTotalReviewCount(book) {
 const books = getBooks();
 books;
 
-// * Array .map Methods
+// * Array .map Methods executed
 const x = [1, 2, 3, 4, 5].map((e) => e * 2);
 console.log(x);
 
@@ -268,6 +268,7 @@ const essentialData = books.map((book) => ({
 
 essentialData;
 
+// * Array filter
 const longbookWithMovie = books
   .filter((book) => book.pages > 500)
   .filter((book) => book.hasMovieAdaptation);
@@ -277,3 +278,7 @@ const adventureBook = books
   .filter((book) => book.genres.includes("adventure"))
   .map((book) => book.title);
 adventureBook;
+
+// * Array reduce
+const pageAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pageAllBooks;
