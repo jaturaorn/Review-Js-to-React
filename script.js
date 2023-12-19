@@ -144,7 +144,7 @@ function getBook(id) {
 }
 
 //* Destrcucturing
-const book = getBook(2);
+const book = getBook(3);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -222,11 +222,22 @@ console.log(book.translations.spanish);
 const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
 console.log(spanishTranslation);
 
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
 // *nullish coalescing
 // *TODO: ?? only return second value when first value is null or undefined
 // *TODO: but not when it is zero or empty string
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
+
+// * Optional Chaining
+
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  // * if value in object is undefined Js not try to read reviewsCount
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
