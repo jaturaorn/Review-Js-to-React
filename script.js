@@ -183,5 +183,19 @@ updateBook;
 /*
 this is Template Literals
  ? const summary = `${title}, a${pages}-page long book, was written by ${author} 
- ? and published in ${publicationDate.split("-")[0]}`
+ ? and published in ${publicationDate.split("-")[0]}. 
+ ? The book has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie`
  */
+
+//* this is Ternaries statement
+// *TODO: Ternaries have three part => first part is condition
+// *TODO: , second part is result of condition if is true
+// *TODO: , third part is result of condition if is false
+const pageRange =
+  pages > 1000 ? "over a thousand pages" : "less than a 1000 pages";
+console.log(`The Book has ${pageRange} pages`);
+
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+// console.log(getYear(publicationDate));
