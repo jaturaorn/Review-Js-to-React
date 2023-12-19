@@ -143,8 +143,8 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-// Destrcucturing
-const book = getBook(1);
+//* Destrcucturing
+const book = getBook(2);
 book;
 // const title = book.title;
 // const author = book.author;
@@ -202,3 +202,31 @@ this is Template Literals
 const pageRange =
   pages > 1000 ? "over a thousand pages" : "less than a 1000 pages";
 console.log(`The Book has ${pageRange} pages`);
+
+// * Short-Circuiting and Logical Operators
+// *TODO: && do like if statement, return the first value not even look at second value
+console.log(true && "Some string");
+console.log(false && "Some string");
+console.log(hasMovieAdaptation && "This book has a movie");
+
+// * truly , falsy
+// *! falsy : 0, '', null, undefined
+console.log("jonas" && "Some string");
+console.log(0 && "Some string");
+
+// *TODO: || do like if statement, first value is true and will return result doesn't even look at second value
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+console.log(spanishTranslation);
+
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+// *nullish coalescing
+// *TODO: ?? only return second value when first value is null or undefined
+// *TODO: but not when it is zero or empty string
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
