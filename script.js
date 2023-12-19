@@ -179,3 +179,9 @@ const updateBook = {
 };
 // const updateBook = { book, moviePublishDate: "2001-12-19" };
 updateBook;
+
+/*
+this is Template Literals
+ ? const summary = `${title}, a${pages}-page long book, was written by ${author} 
+ ? and published in ${publicationDate.split("-")[0]}`
+ */
