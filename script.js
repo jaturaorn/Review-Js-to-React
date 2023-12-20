@@ -282,3 +282,14 @@ adventureBook;
 // * Array reduce
 const pageAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 pageAllBooks;
+
+// * Array sort this method is mutates original array
+// *TODO: use .slice() (is copy array) to stop mutating original array
+const arr = [3, 7, 1, 9, 6];
+const sort = arr.slice().sort((a, b) => a - b);
+// const sorted = x.sort((a, b) => a - b);
+console.log(sort);
+arr;
+
+const sortedByPage = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPage;
