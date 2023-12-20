@@ -243,76 +243,81 @@ this is Template Literals
 
 // console.log(getTotalReviewCount(book));
 
-function getTotalReviewCount(book) {
-  const goodreads = book.reviews?.goodreads?.reviewsCount;
-  // * if value in object is undefined Js not try to read reviewsCount
-  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
-  return goodreads + librarything;
-}
+// function getTotalReviewCount(book) {
+//   const goodreads = book.reviews?.goodreads?.reviewsCount;
+// * if value in object is undefined Js not try to read reviewsCount
+//   const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+//   return goodreads + librarything;
+// }
 
-const books = getBooks();
-books;
+// const books = getBooks();
+// books;
 
 // * Array .map Methods executed
-const x = [1, 2, 3, 4, 5].map((e) => e * 2);
-console.log(x);
+// const x = [1, 2, 3, 4, 5].map((e) => e * 2);
+// console.log(x);
 
-const titles = books.map((book) => book.title);
-titles;
+// const titles = books.map((book) => book.title);
+// titles;
 
-const essentialData = books.map((book) => ({
-  title: book.title,
-  author: book.author,
-  reviewsCount: getTotalReviewCount(book),
-}));
+// const essentialData = books.map((book) => ({
+//   title: book.title,
+//   author: book.author,
+//   reviewsCount: getTotalReviewCount(book),
+// }));
 
-essentialData;
+// essentialData;
 
 // * Array filter
-const longbookWithMovie = books
-  .filter((book) => book.pages > 500)
-  .filter((book) => book.hasMovieAdaptation);
-longbookWithMovie;
+// const longbookWithMovie = books
+//   .filter((book) => book.pages > 500)
+//   .filter((book) => book.hasMovieAdaptation);
+// longbookWithMovie;
 
-const adventureBook = books
-  .filter((book) => book.genres.includes("adventure"))
-  .map((book) => book.title);
-adventureBook;
+// const adventureBook = books
+//   .filter((book) => book.genres.includes("adventure"))
+//   .map((book) => book.title);
+// adventureBook;
 
 // * Array reduce
-const pageAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
-pageAllBooks;
+// const pageAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+// pageAllBooks;
 
 // * Array sort this method is mutates original array
 // *TODO: use .slice() (is copy array) to stop mutating original array
-const arr = [3, 7, 1, 9, 6];
-const sort = arr.slice().sort((a, b) => a - b);
+// const arr = [3, 7, 1, 9, 6];
+// const sort = arr.slice().sort((a, b) => a - b);
 // const sorted = x.sort((a, b) => a - b);
-console.log(sort);
-arr;
+// console.log(sort);
+// arr;
 
-const sortedByPage = books.slice().sort((a, b) => b.pages - a.pages);
-sortedByPage;
+// const sortedByPage = books.slice().sort((a, b) => b.pages - a.pages);
+// sortedByPage;
 
 // * Working with Immutable arrays
 
 // *TODO: add book object to arrays use spread operator
-const newbook = {
-  id: 6,
-  title: "Harry Potter y la piedra filosofal",
-  author: "J. K. Rowling",
-};
+// const newbook = {
+//   id: 6,
+//   title: "Harry Potter y la piedra filosofal",
+//   author: "J. K. Rowling",
+// };
 
-const bookAfterAdd = [...books, newbook];
+// const bookAfterAdd = [...books, newbook];
 // const bookAfterAdd = books.push(newbook);
-bookAfterAdd;
+// bookAfterAdd;
 
 // *TODO: delete book object from arrays use filter operator
-const bookAfterDelete = bookAfterAdd.filter((book) => book.id !== 3);
-bookAfterDelete;
+// const bookAfterDelete = bookAfterAdd.filter((book) => book.id !== 3);
+// bookAfterDelete;
 
 // *TODO: update book object from arrays use map operator & ternary operator
-const bookAfterUpdate = bookAfterDelete.map((book) =>
-  book.id === 1 ? { ...book, pages: 1210 } : book
-);
-bookAfterUpdate;
+// const bookAfterUpdate = bookAfterDelete.map((book) =>
+//   book.id === 1 ? { ...book, pages: 1210 } : book
+// );
+// bookAfterUpdate;
+
+// * Async JS (Promise)
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((res) => res.json())
+  .then((data) => console.log(data));
